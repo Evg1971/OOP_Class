@@ -3,6 +3,9 @@ class ToDoList:
         self.tasks = []
 
     def add_task(self, task):
+        if not task:
+            print("Ошибка: Задача не может быть пустой")
+            return
         self.tasks.append({"task": task, "status": False})
 
     def complete_task(self, task):
@@ -10,14 +13,14 @@ class ToDoList:
             if t["task"] == task:
                 t["status"] = True
                 return
-        print({f"Задача '{task}' не найдена"})
+        print(f"Задача '{task}' не найдена")
 
     def remove_task(self, task):
-        for t in self.tasks:
-            if t["task"] == task:
-                self.tasks.remove(t)
-                return
-        print({f"Задача '{task}' не обнаружена"})
+        if any(t["task"] == task for t in self.tasks):
+            self.tasks = [t for t in self.tasks if t["task"] != task]
+            return
+        else:
+            print(f"Задача '{task}' не обнаружена")
 
     def list_tasks(self):
         for t in self.tasks:
@@ -26,6 +29,7 @@ class ToDoList:
 
 
 todo = ToDoList()
+todo.add_task("")
 todo.add_task("Купить телефон")
 todo.add_task("Прочитать книгу 'Классы в Python'")
 todo.add_task("Зарегистрироваться на 'HH.ru'")
