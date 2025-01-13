@@ -7,20 +7,20 @@ class ToDoList:
             print("Ошибка: Задача не может быть пустой")
         else:
             self.tasks.append({"task": task, "status": False})
-            print(f"Задача {task} добавлена")
+            print(f"Задача '{task}' добавлена")
 
     def complete_task(self, task):
         for t in self.tasks:
             if t["task"] == task:
                 t["status"] = True
-                print(f"Задача {task} выполнена")
+                print(f"Задача '{task}' выполнена")
                 return
         print(f"Задача '{task}' не найдена")
 
     def remove_task(self, task):
         if any(t["task"] == task for t in self.tasks):
             self.tasks = [t for t in self.tasks if t["task"] != task]
-            print(f"Задача {task} удалена")
+            print(f"Задача '{task}' удалена")
         else:
             print(f"Задача '{task}' не обнаружена")
 
