@@ -20,8 +20,5 @@ with open('data.txt', 'rb') as file:
         copy_file.write(file.read())
 
 # 6. Проверка "data_copy"
-file = open('data_copy.txt', 'r')
-print(file.read())
-file.close()
-
-
+with open('data_copy.txt', 'r') as file:
+    print(file.read())
